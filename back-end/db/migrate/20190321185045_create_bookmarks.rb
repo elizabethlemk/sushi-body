@@ -5,6 +5,7 @@ class CreateBookmarks < ActiveRecord::Migration[5.2]
       t.string :restaurant_name
       t.string :img_url
       t.string :address
+      t.integer :avg_rating
 
       t.timestamps
     end
