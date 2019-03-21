@@ -1,0 +1,2 @@
+class SushiGuide < ApplicationRecord
+end
