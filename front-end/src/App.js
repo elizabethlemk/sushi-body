@@ -1,24 +1,29 @@
 import React, { Component } from 'react';
 import './App.css';
-import { Route, Switch, withRouter } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+
 import Home from './containers/Home'
 import User from './containers/User'
 import Restaurant from './containers/Restaurant'
 import SushiGuide from './containers/SushiGuide'
 import Error from './containers/Error'
+import NavBar from './components/NavBar'
 
 class App extends Component {
   render() {
     return (
+      <Router>
       <div>
-      <Switch>
-        <Route path="/user" render={() => <User />}/>
-        <Route path="/sushi" render={() => <SushiGuide />}/>
-        <Route path="/restaurants" render={() => <Restaurant />}/>
-        <Route path="/home" render={() => <Home />}/>
-        <Route path="/" render={() => <Error />}/>
-      </Switch>
+      <NavBar />
+        <Switch>
+        <Route exact path="/sushi" component={SushiGuide}/>
+        <Route exact path="/user" component={User}/>
+        <Route exact path="/restaurants" component={Restaurant}/>
+        <Route exact path="/home" component={Home}/>
+        <Route path="/" component={Error}/>
+        </Switch>
       </div>
+      </Router>
     );
   }
 }
