@@ -4,6 +4,7 @@ class CreateSushiGuides < ActiveRecord::Migration[5.2]
       t.string :english_name
       t.string :japanese_name
       t.string :type
+      t.string :img
 
       t.timestamps
     end

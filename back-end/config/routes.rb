@@ -4,8 +4,9 @@ Rails.application.routes.draw do
   get '/sessions', to: 'sessions#index'
   post '/sessions', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
-  
+
   resources :users
   resources :reviews
   resources :bookmarks
+  resources :sushi_guides
 end

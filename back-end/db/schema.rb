@@ -44,6 +44,7 @@ ActiveRecord::Schema.define(version: 2019_03_21_185224) do
     t.string "english_name"
     t.string "japanese_name"
     t.string "type"
+    t.string "img"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
