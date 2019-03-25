@@ -1,43 +1,32 @@
-import React from 'react'
-import { Grid, Container, Divider, Header, Image } from 'semantic-ui-react'
+import React from 'react';
+import Sushi from '../components/Sushi'
+
+let URL = "http://localhost:3001/sushi_guides"
 
 
 class SushiGuide extends React.Component {
 
-  render(){
+  state = {
+    sushis: []
+  }
+
+  componentDidMount() {
+    fetch(URL)
+      .then(res => res.json())
+      .then(sushis => this.setState({sushis:sushis}))
+  }
+
+  render() {
+    console.log(this.state);
+    let arrayOfSushis = this.state.sushis.map(sushiObj =>
+    <Sushi key={sushiObj.id} sushi={sushiObj} />)
     return (
       <div>
-        <Container fluid textAlign='center'>
-          <Header as='h2'>Sushi Guide</Header>
-          <Divider />
-          <Grid>
-            <Grid.Row columns={3}>
-              <Grid.Column>
-                <Image src='https://www.curiouscuisiniere.com/wp-content/uploads/2015/07/Kimbap-Korean-Sushi-DSC05900-1-2.jpg' />
-              </Grid.Column>
-              <Grid.Column>
-                <Image src='https://www.curiouscuisiniere.com/wp-content/uploads/2015/07/Kimbap-Korean-Sushi-DSC05900-1-2.jpg' />
-              </Grid.Column>
-              <Grid.Column>
-                <Image src='https://www.curiouscuisiniere.com/wp-content/uploads/2015/07/Kimbap-Korean-Sushi-DSC05900-1-2.jpg' />
-              </Grid.Column>
-            </Grid.Row>
-            <Grid.Row columns={3}>
-            <Grid.Column>
-              <Image src='https://www.curiouscuisiniere.com/wp-content/uploads/2015/07/Kimbap-Korean-Sushi-DSC05900-1-2.jpg' />
-            </Grid.Column>
-            <Grid.Column>
-              <Image src='https://www.curiouscuisiniere.com/wp-content/uploads/2015/07/Kimbap-Korean-Sushi-DSC05900-1-2.jpg' />
-            </Grid.Column>
-            <Grid.Column>
-              <Image src='https://www.curiouscuisiniere.com/wp-content/uploads/2015/07/Kimbap-Korean-Sushi-DSC05900-1-2.jpg' />
-            </Grid.Column>
-            </Grid.Row>
-          </ Grid>
-        </Container>
+      {arrayOfSushis}
       </div>
-    )
+    );
   }
+
 }
 
-export default SushiGuide
+export default SushiGuide;
