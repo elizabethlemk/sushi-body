@@ -14,9 +14,6 @@ import MapContainer from './MapContainer'
 
 console.log(process.env.REACT_APP_GOOGLE_MAP_API)
 
-=======
-import MapContainer from './containers/MapContainer'
->>>>>>> 36fd66836584aa2e2b7d0935e75a07f24834e849
 
 class App extends Component {
   state={
