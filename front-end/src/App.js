@@ -9,10 +9,8 @@ import SushiGuide from './containers/SushiGuide'
 import Error from './containers/Error'
 import NavBar from './components/NavBar'
 import Signup from './components/Signup'
-<<<<<<< HEAD
-import MapContainer from './MapContainer'
+import MapContainer from './containers/MapContainer'
 
-console.log(process.env.REACT_APP_GOOGLE_MAP_API)
 
 
 class App extends Component {
@@ -22,6 +20,7 @@ class App extends Component {
 
 
   render() {
+    console.log(process.env.REACT_APP_GOOGLE_MAP_API)
     return (
       <Router>
       <div>
