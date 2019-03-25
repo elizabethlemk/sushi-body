@@ -1,5 +1,4 @@
 import React from 'react'
-import faker from 'faker'
 import { Dropdown, Form } from 'semantic-ui-react'
 import { DateInput, TimeInput, DateTimeInput, DatesRangeInput } from 'semantic-ui-calendar-react';
 
