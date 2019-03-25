@@ -1,5 +1,6 @@
 import React from 'react'
 import { Grid, Container, Divider, Header, Image } from 'semantic-ui-react'
+import MapContainer from '../components/MapContainer'
 
 class Restaurant extends React.Component {
   render(){
@@ -10,20 +11,20 @@ class Restaurant extends React.Component {
           <Divider />
           <Grid centered columns={2}>
               <Grid.Column>
-                <Image src='http://506sports.com/2018/03-CBS-V3.png' />
+                <MapContainer/>
               </Grid.Column>
 
-            <Grid.Row columns={3}>
-              <Grid.Column>
-                <Image src='http://506sports.com/2018/03-CBS-V3.png' />
-              </Grid.Column>
-              <Grid.Column>
-                <Image src='http://506sports.com/2018/03-CBS-V3.png' />
-              </Grid.Column>
-              <Grid.Column>
-                <Image src='http://506sports.com/2018/03-CBS-V3.png' />
-              </Grid.Column>
-            </Grid.Row>
+              <Grid.Row columns={3}>
+                <Grid.Column>
+                  <Image src='http://506sports.com/2018/03-CBS-V3.png' />
+                </Grid.Column>
+                <Grid.Column>
+                  <Image src='http://506sports.com/2018/03-CBS-V3.png' />
+                </Grid.Column>
+                <Grid.Column>
+                  <Image src='http://506sports.com/2018/03-CBS-V3.png' />
+                </Grid.Column>
+              </Grid.Row>
           </ Grid>
         </Container>
       </div>
