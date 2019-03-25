@@ -11,7 +11,7 @@ class NavBar extends React.Component {
 
     return (
 
-      <Menu secondary>
+      <Menu inverted>
         <Menu.Item as={NavLink} exact to="/home" name='home' active={activeItem === 'home'} onClick={this.handleItemClick} />
 
         <Menu.Item
@@ -33,8 +33,8 @@ class NavBar extends React.Component {
 
           <Menu.Item
             as={NavLink} exact to="/user"
-            name='logout'
-            active={activeItem === 'logout'}
+            name='profile'
+            active={activeItem === 'profile'}
             onClick={this.handleItemClick} />
         </Menu.Menu>
 

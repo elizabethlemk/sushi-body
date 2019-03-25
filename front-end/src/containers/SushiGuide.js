@@ -1,7 +1,7 @@
 import React from 'react';
 import Sushi from '../components/Sushi'
 
-let URL = "http://localhost:3001/sushi_guides"
+let URL = "http://localhost:4000/sushi_guides"
 
 
 class SushiGuide extends React.Component {
