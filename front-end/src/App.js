@@ -9,6 +9,7 @@ import SushiGuide from './containers/SushiGuide'
 import Error from './containers/Error'
 import NavBar from './components/NavBar'
 import Signup from './components/Signup'
+import MapContainer from './Map'
 
 class App extends Component {
   state={
