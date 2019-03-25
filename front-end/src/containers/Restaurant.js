@@ -1,6 +1,7 @@
 import React from 'react'
 import { Grid, Container, Divider, Header, Image } from 'semantic-ui-react'
-import MapContainer from './MapContainer'
+import MapContainer from '../components/MapContainer'
+
 class Restaurant extends React.Component {
   render(){
     return(
