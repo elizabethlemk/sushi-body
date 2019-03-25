@@ -37,15 +37,23 @@ class MapContainer extends React.Component {
         zoom={14}
         style={mapStyles}
         initialCenter={{
-         lat: -1.2884,
-         lng: 36.8233
-       }}>
+         lat: 40.7008972,
+         lng: -73.9876024
+       }}
+       >
         <Marker
           onClick={this.onMarkerClick}
           name={'Current Location'}
           />
-
-
+        <InfoWindow
+          marker={this.state.activeMarker}
+          visible={this.state.showingInfoWindow}
+          onClose={this.onClose}
+        >
+        <div>
+        <h4>{this.state.activeMarker.name}</h4>
+       </div>
+        </InfoWindow>
 
 
 
