@@ -1,7 +1,6 @@
 import React from 'react'
 import { Grid, Container, Divider, Header, Image } from 'semantic-ui-react'
 
-
 class SushiGuide extends React.Component {
 
   render(){
