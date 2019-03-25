@@ -30,7 +30,7 @@ class User extends React.Component {
            <List.Item icon='utensils' content='Bookmarked restaurants'/>
            <List.Item icon='newspaper outline' content='My reviews'/>
            <List.Item icon='heart' content='Favorite items'/>
-         </List>  
+         </List>
        </Grid>
       </div>
 
