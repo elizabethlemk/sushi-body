@@ -8,5 +8,5 @@ Rails.application.routes.draw do
   resources :users
   resources :reviews
   resources :bookmarks
-  resources :sushi_guides
+  resources :sushi_guides 
 end
