@@ -12,6 +12,6 @@ class SushiGuidesController < ApplicationController
   private
 
   def sushi_params
-    params.permit(:english_name, :japanese_name, :type, :img)
+    params.permit(:name, :english, :type_one, :img)
   end
 end
