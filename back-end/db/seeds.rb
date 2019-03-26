@@ -6,6 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+user1 = User.create(first_name: "john")
 
 sushi1 = SushiGuide.create(type_one: "fish", type_two: "nigiri", name: "ainame", english: "Rock Trout ", kanji: "鮎魚女", hiragana: "あいなめ", katakana: "アイナメ", img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQK6HNxCqUkZ7XINI-BpDG8LrQJqEfvH-kFeTZAwqo1kiiwDysk1A")
 

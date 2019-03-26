@@ -3,32 +3,43 @@ import { Map, Marker, GoogleApiWrapper, InfoWindow } from 'google-maps-react';
 
 const mapStyles = {
   width: '100%',
-  height: '100%'
+  height: '50%'
 };
+
+
+
 
 class MapContainer extends React.Component {
 
   state = {
     showingInfoWindow: false,
     activeMarker: {},
-    selectedMarker: {}
+    selectedMarker: {},
+    arrayOfMarkers : []
   }
 
-  onMarkerClick = (props, marker, event) =>
+  onMarkerClick = (props, marker, event) => {
     this.setState({
       showingInfoWindow: true,
       activeMarker: marker,
       selectedMarker: marker
     })
+}
 
-    onClose = props => {
-      if(this.state.showingInfoWindow) {
-        this.setState({
-          showingInfoWindow: false,
-          activeMarker:null
-        })
-      }
+
+
+  onClose = props => {
+    if(this.state.showingInfoWindow) {
+      this.setState({
+        showingInfoWindow: false,
+
+      })
     }
+  }
+
+  // dataToMarkers = () => {
+  //   this.props.data
+  // }
 
     render() {
     return (
@@ -37,8 +48,8 @@ class MapContainer extends React.Component {
         zoom={14}
         style={mapStyles}
         initialCenter={{
-         lat: 40.7008972,
-         lng: -73.9876024
+         lat: this.props.latitude,
+         lng: this.props.longitude
        }}
        >
         <Marker
@@ -51,8 +62,13 @@ class MapContainer extends React.Component {
           onClose={this.onClose}
         >
           <div>
+<<<<<<< HEAD
           <h4>{this.state.activeMarker.name}</h4>
          </div>
+=======
+            <h4>{this.state.activeMarker.name}</h4>
+          </div>
+>>>>>>> john
         </InfoWindow>
       </Map>
     );

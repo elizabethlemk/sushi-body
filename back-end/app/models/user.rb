@@ -20,7 +20,7 @@ class User < ApplicationRecord
       term: 'sushi',
       latitude: 40.7008972,
       longitude: -73.9876024,
-      limit: 50,
+      limit: 10,
       categories:'conveyorsushi,sushi',
        sort_by: 'distance',
        radius: 8000
