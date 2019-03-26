@@ -22,7 +22,7 @@ class Signup extends React.Component{
 
   clickSubmit = (userInfo) => {
     console.log({user: userInfo});
-    fetch(URL, {
+    fetch('http://localhost:4000/api/v1/users', {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -57,11 +57,8 @@ class Signup extends React.Component{
         onChange={this.handleChange} />
       <Form.Select fluid label='Location' options={stateOptions} placeholder='Location' name='location' onChange={this.handleChange}/>
       </Form.Group>
-<<<<<<< HEAD
       <Form.Button onClick={() => this.clickSubmit(this.state)}>Submit</Form.Button>
-=======
-      <Form.Button onClick={this.handleClick}>Submit</Form.Button>
->>>>>>> lizzy
+
       </Form>
       </div>
     )

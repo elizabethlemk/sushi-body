@@ -24,7 +24,13 @@ class Api::V1::UsersController < ApplicationController
  end
 
   def update
+    @user = User.find(params[:id])
+    restaurants = @user.search_for_array_of_resturants(user_params["latitude"], user_params["longitude"])
+    restaurants.map do |restaurant|
+      restaurant
+    end
     @user.update(user_params)
+    render json: @user
   end
 
   def destroy
@@ -36,7 +42,7 @@ class Api::V1::UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :username, :password, :password_confirmation, :birthday, :location, :latitude, :longitude)
+    params.require(:user).permit(:first_name, :last_name, :username, :password, :password_confirmation, :birthday, :location, :latitude, :longitude, :restaurants)
   end
 
   def set_user!

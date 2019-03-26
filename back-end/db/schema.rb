@@ -57,10 +57,11 @@ ActiveRecord::Schema.define(version: 2019_03_21_185224) do
     t.string "first_name"
     t.string "last_name"
     t.string "location"
-    t.decimal "latitude"
-    t.decimal "longitude"
+    t.float "latitude"
+    t.float "longitude"
     t.date "birthday"
     t.string "username"
+    t.string "restaurants", default: [], array: true
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

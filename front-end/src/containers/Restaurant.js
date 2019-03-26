@@ -1,6 +1,6 @@
 import React from 'react'
 import { Grid, Container, Divider, Header, Image } from 'semantic-ui-react'
-import MapContainer from './MapContainer'
+import MapContainer from '../components/MapContainer'
 import CurrentLocation from '../components/CurrentLocation'
 
 
@@ -17,16 +17,14 @@ class Restaurant extends React.Component {
       map: []
     })
 
-    // fetch(`http://localhost:3001/user/${session[:id]}`,
-    //   method: 'PATCH',
-    //   headers: {
-    //     "Content-Type":"application/json",
-    //     "Accept":"application/json"
-    //   },
-    //   body: JSON.stringify({longitude: info.longitude, latitude: info.latitude})
-    // )
-    //
-    // fetch()
+    fetch(`http://localhost:4000/api/v1/users/1`,{
+      method: 'PUT',
+      headers: {
+        "content-type": "application/json",
+        accepts: "application/json"
+      },
+      body: JSON.stringify({longitude: info.longitude,latitude: info.latitude})
+    })
 
     this.setState({
       latitude: info.latitude,
