@@ -35,8 +35,8 @@ class User extends React.Component {
        </List>
      </Grid></Tab.Pane> },
       { menuItem: 'Likes', render: () => <Tab.Pane>Tab 2 Content</Tab.Pane> },
-      { menuItem: 'Bookmarks', render: () => <Tab.Pane><Card.Group centered itemsPerRow={3}><Bookmarks /><Bookmarks /><Bookmarks /></Card.Group></Tab.Pane> },
-      { menuItem: 'Reviews', render: () => <Tab.Pane><Review /></Tab.Pane> },
+      { menuItem: 'Bookmarks', render: () => <Tab.Pane><Card.Group centered itemsPerRow={3}><Bookmarks name="user"/><Bookmarks name="user"/><Bookmarks name="user"/></Card.Group></Tab.Pane> },
+      { menuItem: 'Reviews', render: () => <Tab.Pane><Grid.Row columns={3}><Grid.Column><Review /></Grid.Column></Grid.Row></Tab.Pane> },
     ]
     return (
       <Container fluid textAlign='center'>

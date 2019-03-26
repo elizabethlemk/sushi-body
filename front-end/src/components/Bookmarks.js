@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Card, Image} from 'semantic-ui-react'
+import { Button, Card, Image, Rating } from 'semantic-ui-react'
 
 
 class Bookmarks extends React.Component {
@@ -16,9 +16,9 @@ class Bookmarks extends React.Component {
           <Card.Description>Matthew is a musician living in Nashville.</Card.Description>
         </Card.Content>
         <Card.Content extra>
-        <Button disabled={this.props.visible} onClick={() => this.props.handleShowClick()}>
+        {this.props.name === 'journal' ? <Button disabled={this.props.visible} onClick={() => this.props.handleShowClick()}>
           Leave Review
-        </Button>
+        </Button> : <Rating maxRating={5} defaultRating={3} icon='star' disabled /> }
         </Card.Content>
       </Card>
     )

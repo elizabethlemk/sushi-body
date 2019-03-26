@@ -30,7 +30,7 @@ class Journal extends React.Component {
            inverted
            color='teal'
            onHide={this.handleSidebarHide}
-           direction='bottom'
+           direction='top'
            visible={visible}
          >
            <ReviewForm selected={this.state.selected}/>
@@ -39,24 +39,28 @@ class Journal extends React.Component {
          <Sidebar.Pusher dimmed={visible}>
            <Header as='h2'>Your Bookmarks</Header>
              <Card.Group centered itemsPerRow={4}>
-               <Bookmarks handleShowClick={this.handleShowClick} visible={this.state.visible} selected={this.state.selected} />
-               <Bookmarks handleShowClick={this.handleShowClick} visible={this.state.visible} selected={this.state.selected} />
-               <Bookmarks handleShowClick={this.handleShowClick} visible={this.state.visible} selected={this.state.selected} />
-               <Bookmarks handleShowClick={this.handleShowClick} visible={this.state.visible} selected={this.state.selected} />
-               <Bookmarks handleShowClick={this.handleShowClick} visible={this.state.visible} selected={this.state.selected} />
-               <Bookmarks handleShowClick={this.handleShowClick} visible={this.state.visible} selected={this.state.selected} />
-               <Bookmarks handleShowClick={this.handleShowClick} visible={this.state.visible} selected={this.state.selected} />
-               <Bookmarks handleShowClick={this.handleShowClick} visible={this.state.visible} selected={this.state.selected} />
+               <Bookmarks name="journal" handleShowClick={this.handleShowClick} visible={this.state.visible} selected={this.state.selected} />
+               <Bookmarks name="journal" handleShowClick={this.handleShowClick} visible={this.state.visible} selected={this.state.selected} />
+               <Bookmarks name="journal" handleShowClick={this.handleShowClick} visible={this.state.visible} selected={this.state.selected} />
+               <Bookmarks name="journal" handleShowClick={this.handleShowClick} visible={this.state.visible} selected={this.state.selected} />
+               <Bookmarks name="journal" handleShowClick={this.handleShowClick} visible={this.state.visible} selected={this.state.selected} />
+               <Bookmarks name="journal" handleShowClick={this.handleShowClick} visible={this.state.visible} selected={this.state.selected} />
+               <Bookmarks name="journal" handleShowClick={this.handleShowClick} visible={this.state.visible} selected={this.state.selected} />
+               <Bookmarks name="journal" handleShowClick={this.handleShowClick} visible={this.state.visible} selected={this.state.selected} />
              </Card.Group>
          </Sidebar.Pusher>
        </Sidebar.Pushable>
        <Divider />
        <Header as='h2'>Your Reviews</Header>
-        <Grid centered columns={2} >
-          <Review />
-          <Review />
-          <Review />
-          <Review />
+        <Grid centered>
+          <Grid.Row centered columns={3} textAlign='center'>
+            <Grid.Column >
+              <Review />
+              <Review />
+              <Review />
+              <Review />
+            </Grid.Column>
+          </Grid.Row>
         </Grid>
       </Container>
     )

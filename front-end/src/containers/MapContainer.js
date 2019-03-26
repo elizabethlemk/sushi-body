@@ -50,15 +50,10 @@ class MapContainer extends React.Component {
           visible={this.state.showingInfoWindow}
           onClose={this.onClose}
         >
-        <div>
-        <h4>{this.state.activeMarker.name}</h4>
-       </div>
+          <div>
+          <h4>{this.state.activeMarker.name}</h4>
+         </div>
         </InfoWindow>
-
-
-
-
-
       </Map>
     );
   }

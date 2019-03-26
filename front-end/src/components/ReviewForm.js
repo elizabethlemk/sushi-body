@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Form, Header, Rating, Segment, TextArea, } from 'semantic-ui-react'
+import { Button, Divider, Form, Header, Rating, Segment, TextArea, } from 'semantic-ui-react'
 
 class ReviewForm extends React.Component {
   state={
@@ -22,6 +22,7 @@ class ReviewForm extends React.Component {
       <Segment inverted color="teal">
         <Form >
           <Header as='h2' inverted>Leave a Review!</Header>
+          <Divider />
           <Rating maxRating={5} defaultRating={this.state.rating} icon='star' size='huge' name='rating' onRate={this.handleRate}/>
           <Form.Field
             name='review'

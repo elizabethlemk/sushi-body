@@ -19,6 +19,7 @@ class Signup extends React.Component{
       this.setState({ [name]: value });
     }
   }
+
   render(){
     console.log(this.state);
     const stateOptions = ["California", "New York"]
@@ -43,7 +44,7 @@ class Signup extends React.Component{
         onChange={this.handleChange} />
       <Form.Select fluid label='Location' options={stateOptions} placeholder='Location' name='location' onChange={this.handleChange}/>
       </Form.Group>
-      <Form.Button>Submit</Form.Button>
+      <Form.Button onClick={this.handleClick}>Submit</Form.Button>
       </Form>
       </div>
     )
