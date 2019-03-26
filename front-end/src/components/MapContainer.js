@@ -9,6 +9,7 @@ const mapStyles = {
 
 export class MapContainer extends React.Component {
   render() {
+      console.log(process.env.REACT_APP_GOOGLE_MAP_API)
     return (
       <Map
         google={this.props.google}

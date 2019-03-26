@@ -40,16 +40,7 @@ class MapContainer extends React.Component {
          lat: -1.2884,
          lng: 36.8233
        }}>
-        <Marker
-          onClick={this.onMarkerClick}
-          name={'Current Location'}
-          />
-
-
-
-
-
-
+        
 
       </Map>
     );

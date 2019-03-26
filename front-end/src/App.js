@@ -9,7 +9,8 @@ import SushiGuide from './containers/SushiGuide'
 import Error from './containers/Error'
 import NavBar from './components/NavBar'
 import Signup from './components/Signup'
-import MapContainer from './containers/MapContainer'
+import MapContainer from './components/MapContainer'
+import Journal from './containers/Journal'
 
 class App extends Component {
   state={
@@ -18,6 +19,7 @@ class App extends Component {
 
 
   render() {
+  
     return (
       <Router>
       <div>
@@ -27,6 +29,7 @@ class App extends Component {
         <Route exact path="/user" component={User}/>
         <Route exact path="/restaurants" component={MapContainer}/>
         <Route exact path="/home" component={Home}/>
+        <Route exact path="/journal" component={Journal}/>
         <Route exact path="/signup" component={Signup}/>
         <Route path="/" component={Error}/>
         </Switch>

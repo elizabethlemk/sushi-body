@@ -26,6 +26,13 @@ class NavBar extends React.Component {
           active={activeItem === 'restaurants'}
           onClick={this.handleItemClick} />
 
+        <Menu.Item
+          as={NavLink} exact to="/journal"
+          name='journal'
+          active={activeItem === 'journal'}
+          onClick={this.handleItemClick} />
+
+
         <Menu.Menu position='right'>
           <Menu.Item>
             <Input icon='search' placeholder='Search...' />
