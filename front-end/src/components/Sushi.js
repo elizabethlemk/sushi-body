@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Dimmer, Header, Icon, Image, Segment } from 'semantic-ui-react'
+import { Card, Dimmer, Header, Icon, Image} from 'semantic-ui-react'
 
 class Sushi extends React.Component {
   state={
@@ -24,7 +24,6 @@ class Sushi extends React.Component {
   }
 
   render() {
-    console.log(this.state.liked);
     const { active } = this.state
     return (
         <Card >

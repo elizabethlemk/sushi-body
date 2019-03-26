@@ -3,9 +3,10 @@ import { NavLink } from 'react-router-dom';
 import { Dropdown, Image, Input, Menu } from 'semantic-ui-react'
 
 class NavBar extends React.Component {
-  state = { activeItem: 'home' }
+  state = { activeItem: '' }
 
   handleItemClick = (e, { name }) => this.setState({ activeItem: name })
+
   render(){
     const { activeItem } = this.state
 
@@ -41,7 +42,7 @@ class NavBar extends React.Component {
             <Input icon='search' placeholder='Search...' />
           </Menu.Item>
 
-            <Dropdown item text='username' color='teal' active={activeItem === 'user'} onClick={this.handleItemClick}>
+            <Dropdown item text='username' color='teal' active={activeItem === 'user' } onClick={this.handleItemClick}>
               <Dropdown.Menu>
                 <Dropdown.Item as={NavLink} exact to="/user">Profile</Dropdown.Item>
                 <Dropdown.Item as={NavLink} exact to="/settings">Settings</Dropdown.Item>
