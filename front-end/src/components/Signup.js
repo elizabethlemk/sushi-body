@@ -19,6 +19,20 @@ class Signup extends React.Component{
       this.setState({ [name]: value });
     }
   }
+
+  clickSubmit = (userInfo) => {
+    console.log({user: userInfo});
+    fetch(URL, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        accepts: "application/json"
+      },
+      body: JSON.stringify({ user: userInfo })
+    })
+  }
+
+
   render(){
     console.log(this.state);
     const stateOptions = ["California", "New York"]
@@ -43,7 +57,7 @@ class Signup extends React.Component{
         onChange={this.handleChange} />
       <Form.Select fluid label='Location' options={stateOptions} placeholder='Location' name='location' onChange={this.handleChange}/>
       </Form.Group>
-      <Form.Button>Submit</Form.Button>
+      <Form.Button onClick={() => this.clickSubmit(this.state)}>Submit</Form.Button>
       </Form>
       </div>
     )

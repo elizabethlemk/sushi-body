@@ -2,7 +2,7 @@ import React from 'react';
 import Sushi from '../components/Sushi'
 import { Card, Container, Divider, Header} from 'semantic-ui-react'
 
-let URL = "http://localhost:3000/sushi_guides"
+let URL = "http://localhost:4000/sushi_guides"
 
 class SushiGuide extends React.Component {
 
