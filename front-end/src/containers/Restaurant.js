@@ -1,12 +1,8 @@
 import React from 'react'
 import { Grid, Container, Divider, Header, Image } from 'semantic-ui-react'
-<<<<<<< HEAD
 import MapContainer from './MapContainer'
 import CurrentLocation from '../components/CurrentLocation'
 import Geolocation from 'react-geolocation'
-=======
-import MapContainer from '../components/MapContainer'
->>>>>>> master
 
 class Restaurant extends React.Component {
 
