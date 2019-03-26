@@ -31,7 +31,7 @@ const Login = () => {
                type='password'
              />
 
-           <Button color='teal' fluid size='large'>
+           <Button color='teal' fluid size='large' >
              Login
            </Button>
            </Segment>
