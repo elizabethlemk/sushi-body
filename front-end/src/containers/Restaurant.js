@@ -2,32 +2,53 @@ import React from 'react'
 import { Grid, Container, Divider, Header, Image } from 'semantic-ui-react'
 import MapContainer from './MapContainer'
 import CurrentLocation from '../components/CurrentLocation'
-import Geolocation from 'react-geolocation'
+
 
 class Restaurant extends React.Component {
 
   state = {
-    latitude: null,
-    longitude: null
+    latitude: 40.7590,
+    longitude: -73.9845,
+    map: [<MapContainer latitude={40.7590} longitude={-73.9845}/>]
   }
 
-  getCoords = (info) =>{
+  getCoords = (info) => {
+    this.setState({
+      map: []
+    })
+
+    // fetch(`http://localhost:3001/user/${session[:id]}`,
+    //   method: 'PATCH',
+    //   headers: {
+    //     "Content-Type":"application/json",
+    //     "Accept":"application/json"
+    //   },
+    //   body: JSON.stringify({longitude: info.longitude, latitude: info.latitude})
+    // )
+    //
+    // fetch()
+
     this.setState({
       latitude: info.latitude,
-      longitude: info.longitude
+      longitude: info.longitude,
+      map: [<MapContainer latitude={info.latitude} longitude={info.longitude}/>]
     })
   }
 
-  render(){
+
+
+  render(map){
+    console.log(this.state)
     return(
       <div>
-        <CurrentLocation getCoords={this.getCoords}/>
+        <Container>
+          <button onClick={this.forceUpdateHandler}>Update Location</button>
+          <CurrentLocation getCoords={this.getCoords}/>
+        </Container>
         <Container fluid textAlign='center'>
           <Header as='h2'>Restaurants</Header>
           <Divider />
-
-                <MapContainer latitude={this.state.latitude} longitude={this.state.longitude}/>
-
+            {this.state.map}
         </Container>
       </div>
     )

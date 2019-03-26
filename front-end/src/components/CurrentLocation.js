@@ -9,15 +9,16 @@ class CurrentLocation extends React.Component {
   }
   getPosition = () => {
      window.navigator.geolocation.getCurrentPosition(this.success)
-
+     
   }
 
 
 
+
   render() {
-    this.getPosition()
+
     return(
-        null
+        <button onClick={this.getPosition}> Get Location</button>
         )
   }
 }
