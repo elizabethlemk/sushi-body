@@ -12,6 +12,8 @@ import Signup from './components/Signup'
 import MapContainer from './components/MapContainer'
 import Journal from './containers/Journal'
 
+
+
 class App extends Component {
   state={
     user: {}
@@ -19,7 +21,7 @@ class App extends Component {
 
 
   render() {
-  
+
     return (
       <Router>
       <div>

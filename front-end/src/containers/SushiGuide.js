@@ -1,10 +1,25 @@
-import React from 'react'
+import React from 'react';
+import Sushi from '../components/Sushi'
 import { Grid, Container, Divider, Header, Image } from 'semantic-ui-react'
 
+let URL = "http://localhost:4000/sushi_guides"
 
 class SushiGuide extends React.Component {
 
+  state = {
+    sushis: []
+  }
+
+  componentDidMount() {
+    fetch(URL)
+      .then(res => res.json())
+      .then(sushis => this.setState({sushis:sushis}))
+  }
+
   render(){
+    console.log(this.state);
+    // let arrayOfSushis = this.state.sushis.map(sushiObj =>
+    // <Sushi key={sushiObj.id} sushi={sushiObj} />)
     return (
       <div>
         <Container fluid textAlign='center'>
@@ -12,10 +27,9 @@ class SushiGuide extends React.Component {
           <Divider />
           <Grid>
             <Grid.Row columns={3}>
-              <Grid.Column>
-                <Image src='https://www.curiouscuisiniere.com/wp-content/uploads/2015/07/Kimbap-Korean-Sushi-DSC05900-1-2.jpg' />
-              </Grid.Column>
-
+              {this.state.sushis.map(sushiObj => (<Grid.Column>
+                <Sushi key={sushiObj.id} sushi={sushiObj} />
+              </Grid.Column>)) }
             </Grid.Row>
 
           </ Grid>
@@ -25,4 +39,4 @@ class SushiGuide extends React.Component {
   }
 }
 
-export default SushiGuide
+export default SushiGuide;

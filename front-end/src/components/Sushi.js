@@ -5,9 +5,12 @@ class Sushi extends React.Component {
   render() {
     return (
       <div>
-        <h3> {this.props.sushi.name}</h3>
-        <h5> {this.props.sushi.english} </h5>
-        <img src={this.props.sushi.img}/>
+        <ul>
+          <h2>{this.props.sushi.name}</h2>
+          <p>{(this.props.sushi.english).toUpperCase()}</p>
+          <p>{(this.props.sushi.type_one)} / {this.props.sushi.type_two}</p>
+          <img src={this.props.sushi.img}/>
+        </ul>
       </div>
     );
   }
