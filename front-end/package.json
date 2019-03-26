@@ -6,6 +6,8 @@
     "google-maps-react": "^2.0.2",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
+    "react-geolocated": "^2.4.1",
+    "react-geolocation": "^1.0.4",
     "react-router-dom": "^5.0.0",
     "react-scripts": "2.1.8",
     "semantic-ui-css": "^2.4.1",

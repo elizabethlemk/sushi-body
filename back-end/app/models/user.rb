@@ -10,8 +10,8 @@ class User < ApplicationRecord
   has_many :reviews, through: :bookmarks, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :bookmarks, dependent: :destroy
-  
-  def search_for_array_of_resturants
+
+  def search_for_array_of_resturants(latitude,longitude)
     endpoint = 'https://api.yelp.com/v3/businesses/search'
     api_key = getApiKey()
 
@@ -19,7 +19,7 @@ class User < ApplicationRecord
       term: 'sushi',
       latitude: 40.7008972,
       longitude: -73.9876024,
-      limit: 50,
+      limit: 10,
       categories:'conveyorsushi,sushi',
        sort_by: 'distance',
        radius: 8000

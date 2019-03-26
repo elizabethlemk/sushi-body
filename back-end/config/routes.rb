@@ -11,4 +11,5 @@ Rails.application.routes.draw do
   resources :reviews, only: [:index, :show, :create, :update, :destroy]
   resources :bookmarks, only: [:index, :show, :create, :update, :destroy]
   resources :sushi_guides, only: [:index, :create]
+  resources :users, only: [:update]
 end
