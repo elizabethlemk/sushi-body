@@ -2,6 +2,7 @@ import React from 'react'
 import { Form } from 'semantic-ui-react'
 import { DateInput } from 'semantic-ui-calendar-react';
 
+let URL = 'http://localhost:4000/api/v1/users'
 
 class Signup extends React.Component{
   state={

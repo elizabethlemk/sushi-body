@@ -2,7 +2,7 @@
 require 'byebug'
 require 'rest-client'
 # require './concerns/config.rb'
-require_relative '/Users/junhaenglee/Development/mod4/project/sushi_body/sushi-body/back-end/app/models/concerns/config.rb'
+require_relative './concerns/config.rb'
 
 class User < ApplicationRecord
   has_secure_password
