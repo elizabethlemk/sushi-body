@@ -1,5 +1,5 @@
 import React from 'react'
-import { Container, Divider, Grid, Header, List, Tab} from 'semantic-ui-react'
+import { Card, Container, Divider, Grid, Header, List, Tab} from 'semantic-ui-react'
 import Review from '../components/Review'
 import Bookmarks from '../components/Bookmarks'
 
@@ -35,7 +35,7 @@ class User extends React.Component {
        </List>
      </Grid></Tab.Pane> },
       { menuItem: 'Likes', render: () => <Tab.Pane>Tab 2 Content</Tab.Pane> },
-      { menuItem: 'Bookmarks', render: () => <Tab.Pane><Bookmarks /></Tab.Pane> },
+      { menuItem: 'Bookmarks', render: () => <Tab.Pane><Card.Group centered itemsPerRow={3}><Bookmarks /><Bookmarks /><Bookmarks /></Card.Group></Tab.Pane> },
       { menuItem: 'Reviews', render: () => <Tab.Pane><Review /></Tab.Pane> },
     ]
     return (

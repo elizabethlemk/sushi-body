@@ -33,7 +33,7 @@ class Login extends React.Component {
           <Grid.Row>
             <Grid.Column style={{ maxWidth: 450 }}>
               <Header as='h2' color='teal' textAlign='center'>
-                <Image src='https://image.flaticon.com/icons/svg/174/174295.svg' /> Log-in to your account
+                <Image src='https://image.flaticon.com/icons/svg/174/174295.svg' /> Login to Sushi Body
               </Header>
               <Form size='large'>
                 <Segment stacked>

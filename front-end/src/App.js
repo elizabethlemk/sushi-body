@@ -11,6 +11,7 @@ import NavBar from './components/NavBar'
 import Signup from './components/Signup'
 import MapContainer from './components/MapContainer'
 import Journal from './containers/Journal'
+import Settings from './components/Settings'
 
 
 
@@ -33,6 +34,8 @@ class App extends Component {
         <Route exact path="/home" component={Home}/>
         <Route exact path="/journal" component={Journal}/>
         <Route exact path="/signup" component={Signup}/>
+        <Route exact path="/settings" component={Settings}/>
+        <Route exact path="/logout" component={Home}/>
         <Route path="/" component={Error}/>
         </Switch>
       </div>
