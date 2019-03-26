@@ -11,7 +11,7 @@ class Home extends React.Component {
           <video autoPlay loop id='background-video'>
             <source src='/sushi.mp4' type='video/mp4'/>
           </video>
-            <Login />
+          <Login />
       </div>
     )
   }
