@@ -1,7 +1,8 @@
 import React, { createRef } from 'react'
 import Bookmarks from '../components/Bookmarks'
 import ReviewForm from '../components/ReviewForm'
-import { Card, Container, Divider, Grid, Header, Icon, Image, Menu, Ref, Segment, Sidebar } from 'semantic-ui-react'
+import Review from '../components/Review'
+import { Card, Container, Divider, Grid, Header, Segment, Sidebar } from 'semantic-ui-react'
 
 class Journal extends React.Component {
   state={
@@ -11,49 +12,53 @@ class Journal extends React.Component {
 
   segmentRef = createRef()
 
-  handleHideClick = () => this.setState({ visible: false })
   handleShowClick = () => this.setState({ visible: true })
   handleSidebarHide = () => this.setState({ visible: false })
 
   render(){
-    console.log(this.state.visible);
     const { visible } = this.state
 
     return(
-      <Ref innerRef={this.segmentRef}>
-          <Sidebar.Pushable as={Segment}>
-           <Sidebar
-             as={Segment}
-             animation='overlay'
-             icon='labeled'
-             inverted
-             color='teal'
-             onHide={this.handleSidebarHide}
-             direction='bottom'
-             visible={visible}
-           >
-             <ReviewForm />
-           </Sidebar>
+      <Container fluid textAlign='center'>
+        <Header as='h2'>Journal</Header>
 
-           <Sidebar.Pusher dimmed={visible}>
-             <Segment basic>
-               <Container fluid textAlign='center'>
-                 <Header as='h2'>Journal</Header>
-                 <Divider />
-                 <Header as='h2'>Bookmarks</Header>
-                   <Card.Group centered itemsPerRow={4}>
-                     <Bookmarks handleShowClick={this.handleShowClick} visible={this.state.visible} selected={this.state.selected} />
-                     <Bookmarks handleShowClick={this.handleShowClick} visible={this.state.visible} selected={this.state.selected} />
-                     <Bookmarks handleShowClick={this.handleShowClick} visible={this.state.visible} selected={this.state.selected} />
-                     <Bookmarks handleShowClick={this.handleShowClick} visible={this.state.visible} selected={this.state.selected} />
-                   </Card.Group>
-                 <Divider />
-               </Container>
-             </Segment>
-           </Sidebar.Pusher>
-         </Sidebar.Pushable>
+        <Sidebar.Pushable as={Segment}>
+         <Sidebar
+           as={Segment}
+           animation='overlay'
+           icon='labeled'
+           inverted
+           color='teal'
+           onHide={this.handleSidebarHide}
+           direction='bottom'
+           visible={visible}
+         >
+           <ReviewForm selected={this.state.selected}/>
+         </Sidebar>
 
-      </Ref>
+         <Sidebar.Pusher dimmed={visible}>
+           <Header as='h2'>Your Bookmarks</Header>
+             <Card.Group centered itemsPerRow={4}>
+               <Bookmarks handleShowClick={this.handleShowClick} visible={this.state.visible} selected={this.state.selected} />
+               <Bookmarks handleShowClick={this.handleShowClick} visible={this.state.visible} selected={this.state.selected} />
+               <Bookmarks handleShowClick={this.handleShowClick} visible={this.state.visible} selected={this.state.selected} />
+               <Bookmarks handleShowClick={this.handleShowClick} visible={this.state.visible} selected={this.state.selected} />
+               <Bookmarks handleShowClick={this.handleShowClick} visible={this.state.visible} selected={this.state.selected} />
+               <Bookmarks handleShowClick={this.handleShowClick} visible={this.state.visible} selected={this.state.selected} />
+               <Bookmarks handleShowClick={this.handleShowClick} visible={this.state.visible} selected={this.state.selected} />
+               <Bookmarks handleShowClick={this.handleShowClick} visible={this.state.visible} selected={this.state.selected} />
+             </Card.Group>
+         </Sidebar.Pusher>
+       </Sidebar.Pushable>
+       <Divider />
+       <Header as='h2'>Your Reviews</Header>
+        <Grid centered columns={2} >
+          <Review />
+          <Review />
+          <Review />
+          <Review />
+        </Grid>
+      </Container>
     )
   }
 }

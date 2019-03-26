@@ -1,14 +1,6 @@
 import React from 'react'
-import { Dropdown, Form } from 'semantic-ui-react'
-import { DateInput, TimeInput, DateTimeInput, DatesRangeInput } from 'semantic-ui-calendar-react';
-
-
-// const addressDefinitions = faker.definitions.address
-// const stateOptions = addressDefinitions.map(addressDefinitions.state, (state, index) => ({
-//   key: addressDefinitions.state_abbr[index],
-//   text: state,
-//   value: addressDefinitions.state_abbr[index],
-// }))
+import { Form } from 'semantic-ui-react'
+import { DateInput } from 'semantic-ui-calendar-react';
 
 
 class Signup extends React.Component{

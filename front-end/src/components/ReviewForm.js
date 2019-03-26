@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Form, Header, Input, Rating, Segment, Select, TextArea, } from 'semantic-ui-react'
+import { Button, Form, Header, Rating, Segment, TextArea, } from 'semantic-ui-react'
 
 class ReviewForm extends React.Component {
   state={

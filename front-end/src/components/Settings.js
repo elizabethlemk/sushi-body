@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card, Container, Divider, Grid, Header, List, Tab} from 'semantic-ui-react'
+import { Container, Divider, Header, Tab} from 'semantic-ui-react'
 
 class Settings extends React.Component {
   state={

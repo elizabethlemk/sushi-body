@@ -1,7 +1,5 @@
 import React from 'react'
-import Signup from '../components/Signup'
 import Login from '../components/Login'
-import { Container } from 'semantic-ui-react'
 
 class Home extends React.Component {
 
