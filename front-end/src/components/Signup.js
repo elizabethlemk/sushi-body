@@ -1,4 +1,5 @@
 import React from 'react'
+
 import { Form } from 'semantic-ui-react'
 import { DateInput } from 'semantic-ui-calendar-react';
 
@@ -58,7 +59,7 @@ class Signup extends React.Component{
               onChange={this.handleChange} />
             <Form.Select fluid label='Location' options={stateOptions} placeholder='Location' name='location' onChange={this.handleChange}/>
           </Form.Group>
-          <Form.Button onClick={() => this.clickSubmit(this.state)}>Submit</Form.Button>
+          <Form.Button onClick={() => this.clickSubmit(this.state)} >Submit</Form.Button>
         </Form>
       </div>
     )

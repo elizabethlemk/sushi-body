@@ -20,6 +20,27 @@ class App extends Component {
     user: {}
   }
 
+  // componentDidMount = () => {
+  //   let token = localStorage.token;
+  //   token
+  //     ? fetch("http://localhost:3000/api/v1/user", {
+  //         method: "GET",
+  //         headers: {
+  //           "content-type": "application/json",
+  //           accepts: "application/json",
+  //           Authorization: `${token}`
+  //         }
+  //       })
+  //         .then(resp => resp.json())
+  //         .then(user => {
+  //           this.setState({ user }, () => {
+  //             console.log(user);
+  //             this.props.history.push("/profile");
+  //           });
+  //         })
+  //     : this.props.history.push("/signup");
+  // };
+
   render() {
 
     return (
