@@ -1,8 +1,7 @@
 import React from 'react'
 import { Form } from 'semantic-ui-react'
 import { DateInput } from 'semantic-ui-calendar-react';
-
-let URL = 'http://localhost:4000/api/v1/users'
+import { Route, Switch, WithRouter, Link} from 'react-router-dom';
 
 class Signup extends React.Component{
   state={
@@ -35,7 +34,6 @@ class Signup extends React.Component{
 
 
   render(){
-    console.log(this.state);
     const stateOptions = ["California", "New York"]
     return (
       <div className="signup-form">

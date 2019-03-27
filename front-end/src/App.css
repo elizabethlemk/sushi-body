@@ -9,5 +9,17 @@
 }
 
 .login-form {
+  background-image: url("plate.jpg");
+  height:100vh;
+  width: 100vw;
+}
+
+.cform {
   margin-top: 30vh;
+}
+
+.welcome {
+  margin-top: 30vh;
+  font-size: 3em;
+  letter-spacing: .3em;
 }
