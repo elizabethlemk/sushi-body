@@ -15,7 +15,7 @@ class MapContainer extends React.Component {
     showingInfoWindow: false,
     activeMarker: {},
     selectedMarker: {},
-    arrayOfMarkers : []
+    markerArray: []
   }
 
   onMarkerClick = (props, marker, event) => {
@@ -42,10 +42,11 @@ class MapContainer extends React.Component {
   // }
 
     render() {
+      console.log(this.props.markers)
     return (
-      <Map
+      <Map className="asd"
         google={this.props.google}
-        zoom={14}
+        zoom={15}
         style={mapStyles}
         initialCenter={{
          lat: this.props.latitude,
@@ -56,6 +57,7 @@ class MapContainer extends React.Component {
           onClick={this.onMarkerClick}
           name={'Current Location'}
           />
+        {this.props.markers}
         <InfoWindow
           marker={this.state.activeMarker}
           visible={this.state.showingInfoWindow}
