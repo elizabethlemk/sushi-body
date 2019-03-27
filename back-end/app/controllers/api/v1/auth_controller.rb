@@ -11,14 +11,6 @@ class Api::V1::AuthController < ApplicationController
      end
    end
 
-   # def show
-   #   jwt = request.headers['Authorization']
-   #   something = jwt.split('Bearer')
-   #   id = JWT.decode(something[1], 'my_s3cr3t')[0]["user_id"]
-   #   @user = User.find(id)
-   #   render json: {user: @user}
-   # end
-
    private
 
    def user_login_params
