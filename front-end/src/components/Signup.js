@@ -33,7 +33,7 @@ class Signup extends React.Component{
       },
       body: JSON.stringify({ user: userInfo })
     })
-    this.props.history.push(`/home/${this.state.username}`);
+    this.props.history.push(`/user`);
   }
 
 
@@ -62,7 +62,7 @@ class Signup extends React.Component{
               onChange={this.handleChange} />
             <Form.Select fluid label='Location' options={stateOptions} placeholder='Location' name='location' onChange={this.handleChange}/>
           </Form.Group>
-          <Link to= {`/home/${this.state.username}`} >
+          <Link to= {`/user`} >
           <Form.Button onClick={() => this.clickSubmit(this.state)}>Submit</Form.Button>
           </Link>
         </Form>

@@ -4,36 +4,16 @@ import Review from '../components/Review'
 import Bookmarks from '../components/Bookmarks'
 
 class User extends React.Component {
-  // activeItem: is used for Semantic button toggles
-  state={
-    firstName: null,
-    lastName: null,
-    Location: null,
-    birthday: null,
-    bookmarks: null,
-    reviews: null,
-    likes: null
-  }
-
-  componentDidMount(){
-    // uncomment this for login
-    // fetch(userData)
-    //   .then(resp => resp.json())
-    //   .then(json => {
-    //     let user = json.find(data => data.id === current_user.id)
-    //     this.setState({ user })
-    // })
-  }
-
 
   render(){
     // this handles the Semantic button toggles
+    const name = `${this.props.user.first_name} ${this.props.user.last_name}`
     const panes = [
       { menuItem: 'Bio', render: () => <Tab.Pane><Grid columns={1} >
         <List>
-         <List.Item icon='users' content='First name Last name' />
-         <List.Item icon='marker' content='New York, NY' />
-         <List.Item icon='birthday cake' content='10/10/2010' />
+         <List.Item icon='users' content={name}/>
+         <List.Item icon='marker' content={this.props.user.location} />
+         <List.Item icon='birthday cake' content={this.props.user.birthday} />
        </List>
      </Grid></Tab.Pane> },
       { menuItem: 'Likes', render: () => <Tab.Pane>Tab 2 Content</Tab.Pane> },
