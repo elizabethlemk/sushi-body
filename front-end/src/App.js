@@ -36,14 +36,24 @@ class App extends Component {
       : this.props.history.push("/home");
   };
 
-  handleLikes = () => {
+  handleLikes = (sushiId) => {
     fetch('http://localhost:4000/favorites',{
       method: 'POST',
       headers: {
         "content-type": "application/json",
         accepts: "application/json"
       },
-      body: JSON.stringify({ user: {} })
+      body: JSON.stringify({
+        user_id: this.state.user.id,
+        sushi_id: sushiId
+       })
+    }).then(resp => resp.json())
+    .then(json => console.log(json))
+  }
+
+  handleUnlike = (sushiId) => {
+    fetch(`http://localhost:4000/favorites/${sushiId}`,{
+      method: 'DELETE'
     })
   }
 
@@ -84,7 +94,7 @@ class App extends Component {
         <NavBar user={this.state.user} />
         <Switch>
           <Route exact path="/home" render={() => <Home handleSubmit={this.handleSubmit} />} />
-          <Route exact path="/guide" render={() => <SushiGuide user={this.state.user} />} />
+          <Route exact path="/guide" render={() => <SushiGuide user={this.state.user} handleLikes={this.handleLikes}/>} />
           <Route exact path="/user" render={() => <User user={this.state.user} />} />
           <Route exact path="/restaurants" render={() => <MapContainer user={this.state.user} />} />
           <Route exact path="/journal" render={() => <Journal user={this.state.user} />} />
