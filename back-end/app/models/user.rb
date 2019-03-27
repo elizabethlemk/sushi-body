@@ -8,9 +8,9 @@ class User < ApplicationRecord
   has_secure_password
 
   # model relationships
-  has_many :reviews, through: :bookmarks, dependent: :destroy
   has_many :favorites, dependent: :destroy
   has_many :bookmarks, dependent: :destroy
+  has_many :reviews, through: :bookmarks, dependent: :destroy
 
   def search_for_array_of_resturants
     endpoint = 'https://api.yelp.com/v3/businesses/search'

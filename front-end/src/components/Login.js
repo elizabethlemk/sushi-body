@@ -14,11 +14,8 @@ class Login extends React.Component {
     }
   }
 
-
   render(){
-    console.log(this.state);
     return (
-
       <div className="login-form">
         <Grid textAlign='center' style={{ height: '100%' }} verticalAlign='middle' className='cform'>
           <Grid.Row>
@@ -39,7 +36,7 @@ class Login extends React.Component {
                   onChange={this.handleChange}
                   />
 
-                <Button color='teal' fluid size='large' onClick={() => this.props.handleSubmit(this.state)}> Login </Button>
+                <Button color='teal' fluid size='large' onClick={() => this.props.handleLogin(this.state)}> Login </Button>
               </Segment>
             </Form>
             <Message> New to us? <Link to="/signup">Sign Up</Link> </Message>

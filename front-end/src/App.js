@@ -39,10 +39,26 @@ class App extends Component {
               this.props.history.push("/user");
             });
           })
-      : this.props.history.push("/signup");
+      : this.props.history.push("/home");
   };
 
-  handleSubmit = (userInfo) => {
+  handleSignup = (userInfo) => {
+    fetch('http://localhost:4000/api/v1/users', {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        accepts: "application/json"
+      },
+      body: JSON.stringify({ user: userInfo })
+    }).then(resp => resp.json())
+    .then(json => {
+      this.setState({user: json.user })
+      this.props.history.push(`/user`)
+    }
+  )
+}
+
+  handleLogin = (userInfo) => {
     fetch('http://localhost:4000/api/v1/login', {
       method: "POST",
       headers: {
@@ -51,10 +67,11 @@ class App extends Component {
       },
       body: JSON.stringify({ user: userInfo })
     }).then(resp => resp.json())
-      .then(
-        userData => this.setState({ user: userData.user }),
-        () => this.props.history.push("/user")
-      );
+      .then(json => {
+        this.setState ({ user: json.user })
+        this.props.history.push("/journal")
+      }
+    );
   }
 
   render() {
@@ -63,15 +80,15 @@ class App extends Component {
       <Router>
         <NavBar user={this.state.user} />
         <Switch>
+          <Route exact path="/home" render={() => <Home handleSubmit={this.handleSubmit} />} />
           <Route exact path="/guide" render={() => <SushiGuide user={this.state.user} />} />
           <Route exact path="/user" render={() => <User user={this.state.user} />} />
           <Route exact path="/restaurants" render={() => <MapContainer user={this.state.user} />} />
-          <Route exact path="/home" render={() => <Home handleSubmit={this.handleSubmit} />} />
           <Route exact path="/journal" render={() => <Journal user={this.state.user} />} />
-          <Route exact path="/login" render={() => <Login user={this.state.user} handleSubmit={this.handleSubmit} />} />
-          <Route exact path="/signup" component={Signup}/>
+          <Route exact path="/login" render={() => <Login user={this.state.user} handleLogin={this.handleLogin} />} />
+          <Route exact path="/signup" render={() => <Signup user={this.state.user} handleSignup={this.handleSignup} />} />
           <Route exact path="/settings" render={() => <Settings user={this.state.user} />} />
-          <Route exact path="/logout" component={Home}/>
+          <Route exact path="/logout" component={Home} />
           <Route path="/" component={Error}/>
         </Switch>
       </Router>
