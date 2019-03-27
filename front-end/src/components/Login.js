@@ -19,9 +19,9 @@ class Login extends React.Component {
       <div className="login-form">
         <Grid textAlign='center' style={{ height: '100%' }} verticalAlign='middle' className='cform'>
           <Grid.Row>
-            <Grid.Column style={{ maxWidth: 450 }}>
-              <Header as='h2' color='teal' textAlign='center'>
-                <Image src='https://image.flaticon.com/icons/svg/174/174295.svg' /> Login to Sushi Body
+            <Grid.Column style={{ maxWidth: 525 }}>
+              <Header as='h2' color='teal' textAlign='center' className='head'>
+                <Image src='https://image.flaticon.com/icons/svg/174/174295.svg' /> LOG INTO SUSHI BODY
               </Header>
               <Form size='large' >
                 <Segment stacked>
