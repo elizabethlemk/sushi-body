@@ -13,7 +13,7 @@ class SushiGuide extends React.Component {
   componentDidMount() {
     fetch(URL)
       .then(res => res.json())
-      .then(sushis => this.setState({sushis:sushis}))
+      .then(sushi => this.setState({sushis: sushi}))
   }
 
   render(){

@@ -1,5 +1,5 @@
 class Api::V1::AuthController < ApplicationController
-  skip_before_action :authorized, only: [:create]
+  skip_before_action :authorized, only: [:create, :show]
 
    def create
      @user = User.find_by(username: user_login_params[:username])
@@ -9,14 +9,6 @@ class Api::V1::AuthController < ApplicationController
      else
        render json: { message: 'Invalid username or password' }, status: :unauthorized
      end
-   end
-
-   def show
-     jwt = request.headers['Authorization']
-     something = jwt.split('Bearer')
-     id = JWT.decode(something[1], 'my_s3cr3t')[0]["user_id"]
-     @user = User.find(id)
-     render json: {user: @user}
    end
 
    private

@@ -8,7 +8,7 @@
   position: fixed; /* optional depending on what you want to do in your app */
 }
 
-.login-form {
+.login-form, .signup-form {
   background-image: url("plate.jpg");
   height:100vh;
   width: 100vw;
@@ -21,5 +21,9 @@
 .welcome {
   margin-top: 30vh;
   font-size: 3em;
+  letter-spacing: .3em;
+}
+
+.head {
   letter-spacing: .3em;
 }

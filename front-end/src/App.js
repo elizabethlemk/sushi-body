@@ -14,8 +14,6 @@ import MapContainer from './components/MapContainer'
 import Journal from './containers/Journal'
 import Settings from './components/Settings'
 
-
-
 class App extends Component {
   state={
     user: {}
@@ -24,23 +22,30 @@ class App extends Component {
   componentDidMount = () => {
     let token = localStorage.token;
     token
-      ? fetch("http://localhost:3000/api/v1/user", {
+      ? fetch("http://localhost:4000/api/v1/profile", {
           method: "GET",
           headers: {
             "content-type": "application/json",
             accepts: "application/json",
-            Authorization: `${token}`
+            Authorization: `Bearer ${token}`
           }
-        })
-          .then(resp => resp.json())
-          .then(user => {
-            this.setState({ user }, () => {
-              console.log("Current user is:",user);
-              this.props.history.push("/user");
-            });
-          })
+        }).then(resp => resp.json())
+          .then(json => this.setState({ user: json.user }, () => this.props.history.push("/user")
+            )
+          )
       : this.props.history.push("/home");
   };
+
+  handleLikes = () => {
+    fetch('http://localhost:4000/favorites',{
+      method: 'POST',
+      headers: {
+        "content-type": "application/json",
+        accepts: "application/json"
+      },
+      body: JSON.stringify({ user: {} })
+    })
+  }
 
   handleSignup = (userInfo) => {
     fetch('http://localhost:4000/api/v1/users', {
@@ -51,10 +56,11 @@ class App extends Component {
       },
       body: JSON.stringify({ user: userInfo })
     }).then(resp => resp.json())
-    .then(json => {
-      this.setState({user: json.user })
-      this.props.history.push(`/user`)
-    }
+    .then(json => this.setState({user: json.user },
+      () => { localStorage.setItem("token", json.jwt);
+        this.props.history.push("/journal");
+      }
+    )
   )
 }
 
@@ -67,15 +73,12 @@ class App extends Component {
       },
       body: JSON.stringify({ user: userInfo })
     }).then(resp => resp.json())
-      .then(json => {
-        this.setState ({ user: json.user })
-        this.props.history.push("/journal")
-      }
+      .then(json => this.setState ({ user: json.user }), () => this.props.history.push("/journal")
     );
   }
 
-  render() {
-
+  render(){
+    console.log("The current user is: ", this.state)
     return (
       <Router>
         <NavBar user={this.state.user} />
