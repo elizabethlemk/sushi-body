@@ -10,7 +10,6 @@ class NavBar extends React.Component {
 
   handleItemClick = (e, { name }) => this.setState({ activeItem: name })
 
-
   playSound = () => {
       audio.play();
   }
@@ -18,7 +17,7 @@ class NavBar extends React.Component {
 
   render(){
     const { activeItem } = this.state
-
+    console.log(this.props.user);
     return (
 
       <Menu inverted>
@@ -39,11 +38,12 @@ class NavBar extends React.Component {
           active={activeItem === 'restaurants'}
           onClick={this.handleItemClick} />
 
-        <Menu.Item
+        { Object.keys(this.props.user).length > 0 ?
+          <Menu.Item
           as={NavLink} exact to="/journal"
           name='journal'
           active={activeItem === 'journal'}
-          onClick={this.handleItemClick} />
+          onClick={this.handleItemClick} /> : null }
 
 
         <Menu.Menu position='right'>
@@ -51,14 +51,19 @@ class NavBar extends React.Component {
             <Input icon='search' placeholder='Search...' />
           </Menu.Item>
 
-            <Dropdown item text='username' color='teal' active={activeItem === 'user' } onClick={this.handleItemClick}>
-              <Dropdown.Menu>
-                <Dropdown.Item as={NavLink} exact to="/user">Profile</Dropdown.Item>
-                <Dropdown.Item as={NavLink} exact to="/settings">Settings</Dropdown.Item>
-                <Dropdown.Item as={NavLink} exact to="/logout">Logout</Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>
-
+          {Object.keys(this.props.user).length > 0  ?
+            <Dropdown item text={this.props.user.username} color='teal' active={activeItem === 'user' } onClick={this.handleItemClick}>
+            <Dropdown.Menu>
+              <Dropdown.Item as={NavLink} exact to="/user">Profile</Dropdown.Item>
+              <Dropdown.Item as={NavLink} exact to="/settings">Settings</Dropdown.Item>
+              <Dropdown.Item as={NavLink} exact to="/logout">Logout</Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown> :
+          <Menu.Item
+            as={NavLink} exact to="/login"
+            name='login'
+            active={activeItem === 'login'}
+            onClick={this.handleItemClick} /> }
         </Menu.Menu>
 
       </Menu>
