@@ -40,8 +40,8 @@ class Restaurant extends React.Component {
     return(
       <div>
         <Container>
-          <button onClick={this.forceUpdateHandler}>Update Location</button>
           <CurrentLocation getCoords={this.getCoords}/>
+          <button onClick={this.forceUpdateHandler}>Get Restaurants</button>
         </Container>
         <Container fluid textAlign='center'>
           <Header as='h2'>Restaurants</Header>
