@@ -17,9 +17,11 @@ class User extends React.Component {
 
   componentDidMount(){
     // uncomment this for login
-    // fetch(userData).then(resp => resp.json()).then(json => {
-    //   let user = json.find(data => data.id === current_user.id)
-    //   this.setState({ user })
+    // fetch(userData)
+    //   .then(resp => resp.json())
+    //   .then(json => {
+    //     let user = json.find(data => data.id === current_user.id)
+    //     this.setState({ user })
     // })
   }
 

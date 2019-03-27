@@ -1,6 +1,8 @@
 import React from 'react'
 import { Form } from 'semantic-ui-react'
 import { DateInput } from 'semantic-ui-calendar-react';
+import { Route, Switch, WithRouter, Link} from 'react-router-dom';
+
 
 let URL = 'http://localhost:4000/api/v1/users'
 
@@ -31,11 +33,13 @@ class Signup extends React.Component{
       },
       body: JSON.stringify({ user: userInfo })
     })
+    this.props.history.push(`/home/${this.state.username}`);
   }
 
 
   render(){
     console.log(this.state);
+    console.log(this.props);
     const stateOptions = ["California", "New York"]
     return (
       <div className="signup-form">
@@ -58,7 +62,9 @@ class Signup extends React.Component{
               onChange={this.handleChange} />
             <Form.Select fluid label='Location' options={stateOptions} placeholder='Location' name='location' onChange={this.handleChange}/>
           </Form.Group>
+          <Link to= {`/home/${this.state.username}`} >
           <Form.Button onClick={() => this.clickSubmit(this.state)}>Submit</Form.Button>
+          </Link>
         </Form>
       </div>
     )
