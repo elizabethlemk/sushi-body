@@ -1,5 +1,6 @@
 import React from 'react'
-import { Form } from 'semantic-ui-react'
+
+import { Divider, Form, Grid, Header, Segment } from 'semantic-ui-react'
 import { DateInput } from 'semantic-ui-calendar-react';
 import { Route, Switch, WithRouter, Link} from 'react-router-dom';
 

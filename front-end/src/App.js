@@ -14,8 +14,6 @@ import MapContainer from './components/MapContainer'
 import Journal from './containers/Journal'
 import Settings from './components/Settings'
 
-
-
 class App extends Component {
   state={
     user: {}
@@ -24,23 +22,40 @@ class App extends Component {
   componentDidMount = () => {
     let token = localStorage.token;
     token
-      ? fetch("http://localhost:3000/api/v1/user", {
+      ? fetch("http://localhost:4000/api/v1/profile", {
           method: "GET",
           headers: {
             "content-type": "application/json",
             accepts: "application/json",
-            Authorization: `${token}`
+            Authorization: `Bearer ${token}`
           }
-        })
-          .then(resp => resp.json())
-          .then(user => {
-            this.setState({ user }, () => {
-              console.log("Current user is:",user);
-              this.props.history.push("/user");
-            });
-          })
+        }).then(resp => resp.json())
+          .then(json => this.setState({ user: json.user }, () => this.props.history.push("/user")
+            )
+          )
       : this.props.history.push("/home");
   };
+
+  handleLikes = (sushiId) => {
+    fetch('http://localhost:4000/favorites',{
+      method: 'POST',
+      headers: {
+        "content-type": "application/json",
+        accepts: "application/json"
+      },
+      body: JSON.stringify({
+        user_id: this.state.user.id,
+        sushi_id: sushiId
+       })
+    }).then(resp => resp.json())
+    .then(json => console.log(json))
+  }
+
+  handleUnlike = (sushiId) => {
+    fetch(`http://localhost:4000/favorites/${sushiId}`,{
+      method: 'DELETE'
+    })
+  }
 
   handleSignup = (userInfo) => {
     fetch('http://localhost:4000/api/v1/users', {
@@ -51,10 +66,11 @@ class App extends Component {
       },
       body: JSON.stringify({ user: userInfo })
     }).then(resp => resp.json())
-    .then(json => {
-      this.setState({user: json.user })
-      this.props.history.push(`/user`)
-    }
+    .then(json => this.setState({user: json.user },
+      () => { localStorage.setItem("token", json.jwt);
+        this.props.history.push("/journal");
+      }
+    )
   )
 }
 
@@ -67,28 +83,26 @@ class App extends Component {
       },
       body: JSON.stringify({ user: userInfo })
     }).then(resp => resp.json())
-      .then(json => {
-        this.setState ({ user: json.user })
-        this.props.history.push("/journal")
-      }
+      .then(json => this.setState ({ user: json.user }), () => this.props.history.push("/journal")
     );
   }
 
-  render() {
-
+  render(){
+    console.log("The current user is: ", this.state)
     return (
       <Router>
         <NavBar user={this.state.user} />
         <Switch>
-        <Route exact path="/guide" component={SushiGuide}/>
-        <Route exact path="/user" component={User}/>
-        <Route exact path="/restaurants" component={Restaurant}/>
-        <Route exact path="/home" component={Home}/>
-        <Route exact path="/journal" component={Journal}/>
-        <Route exact path="/signup" component={Signup}/>
-        <Route exact path="/settings" component={Settings}/>
-        <Route exact path="/logout" component={Home}/>
-        <Route path="/" component={Error}/>
+          <Route exact path="/home" render={() => <Home handleSubmit={this.handleSubmit} />} />
+          <Route exact path="/guide" render={() => <SushiGuide user={this.state.user} handleLikes={this.handleLikes}/>} />
+          <Route exact path="/user" render={() => <User user={this.state.user} />} />
+          <Route exact path="/restaurants" render={() => <MapContainer user={this.state.user} />} />
+          <Route exact path="/journal" render={() => <Journal user={this.state.user} />} />
+          <Route exact path="/login" render={() => <Login user={this.state.user} handleLogin={this.handleLogin} />} />
+          <Route exact path="/signup" render={() => <Signup user={this.state.user} handleSignup={this.handleSignup} />} />
+          <Route exact path="/settings" render={() => <Settings user={this.state.user} />} />
+          <Route exact path="/logout" component={Home} />
+          <Route path="/" component={Error}/>
         </Switch>
       </Router>
     );

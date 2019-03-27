@@ -2,8 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { Dropdown, Image, Input, Menu } from 'semantic-ui-react'
 
-let audio = new Audio();
-audio.src = "sushibody.mp3";
+let audio = new Audio("sushibody.mp3");
 
 class NavBar extends React.Component {
   state = { activeItem: '' }
@@ -14,14 +13,12 @@ class NavBar extends React.Component {
       audio.play();
   }
 
-
   render(){
     const { activeItem } = this.state
-    console.log(this.props.user);
     return (
 
       <Menu inverted>
-        <Menu.Item name='icon' onClick={this.playSound}>
+        <Menu.Item name='icon' onClick={() => audio.play()}>
           <Image src='https://image.flaticon.com/icons/svg/174/174295.svg' size='mini'/>
         </Menu.Item>
         <Menu.Item as={NavLink} exact to="/home" name='home' active={activeItem === 'home'} onClick={this.handleItemClick} />

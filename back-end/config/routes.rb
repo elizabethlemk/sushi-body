@@ -4,10 +4,12 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :users, only: [:create,:update]
       post '/login', to: 'auth#create'
-      get '/current_user', to: 'auth#show'
+      # get '/current_user', to: 'auth#show'
+      get '/profile', to: 'users#profile'
     end
   end
 
+  resources :favorites, only: [:index, :show, :create, :destroy]
   resources :reviews, only: [:index, :show, :create, :update, :destroy]
   resources :bookmarks, only: [:index, :show, :create, :update, :destroy]
   resources :sushi_guides, only: [:index, :create]

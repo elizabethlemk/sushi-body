@@ -5,7 +5,7 @@ import { Comment, Grid, Icon, Rating } from 'semantic-ui-react'
 
 const Review = () => {
   return (
-    <Grid.Column padded >
+    <Grid.Column>
       <Comment.Group>
        <Comment>
          <Comment.Content textAlign='center'>
