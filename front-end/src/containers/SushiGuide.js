@@ -23,7 +23,7 @@ class SushiGuide extends React.Component {
         <Divider />
         <Card.Group itemsPerRow={6}>
           {this.state.sushis.map(sushiObj => (
-            <Sushi key={sushiObj.id} sushi={sushiObj} />
+            <Sushi key={sushiObj.id} sushi={sushiObj} handleLikes={this.props.handleLikes}/>
           )) }
         </ Card.Group>
       </Container>

@@ -19,7 +19,15 @@ class Sushi extends React.Component {
 
   handleHide = () => this.setState({ active: false })
   handleShow = () => {
-    this.setState({ active: true, liked: !this.state.liked })
+    this.setState({ active: true, liked: !this.state.liked },
+      () => {
+        if (this.state.liked) {
+          this.props.handleLikes(this.props.sushi.id)
+        } else {
+          console.log("trying to delte");
+        }
+      }
+    )
     setTimeout(this.handleHide, 2000)
   }
 

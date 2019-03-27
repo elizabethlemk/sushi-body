@@ -36,14 +36,24 @@ class App extends Component {
       : this.props.history.push("/home");
   };
 
-  handleLikes = () => {
+  handleLikes = (sushiId) => {
     fetch('http://localhost:4000/favorites',{
       method: 'POST',
       headers: {
         "content-type": "application/json",
         accepts: "application/json"
       },
-      body: JSON.stringify({ user: {} })
+      body: JSON.stringify({
+        user_id: this.state.user.id,
+        sushi_id: sushiId
+       })
+    }).then(resp => resp.json())
+    .then(json => console.log(json))
+  }
+
+  handleUnlike = (sushiId) => {
+    fetch(`http://localhost:4000/favorites/${sushiId}`,{
+      method: 'DELETE'
     })
   }
 
@@ -83,15 +93,16 @@ class App extends Component {
       <Router>
         <NavBar user={this.state.user} />
         <Switch>
-        <Route exact path="/guide" component={SushiGuide}/>
-        <Route exact path="/user" component={User}/>
-        <Route exact path="/restaurants" component={Restaurant}/>
-        <Route exact path="/home" component={Home}/>
-        <Route exact path="/journal" component={Journal}/>
-        <Route exact path="/signup" component={Signup}/>
-        <Route exact path="/settings" component={Settings}/>
-        <Route exact path="/logout" component={Home}/>
-        <Route path="/" component={Error}/>
+          <Route exact path="/home" render={() => <Home handleSubmit={this.handleSubmit} />} />
+          <Route exact path="/guide" render={() => <SushiGuide user={this.state.user} handleLikes={this.handleLikes}/>} />
+          <Route exact path="/user" render={() => <User user={this.state.user} />} />
+          <Route exact path="/restaurants" render={() => <MapContainer user={this.state.user} />} />
+          <Route exact path="/journal" render={() => <Journal user={this.state.user} />} />
+          <Route exact path="/login" render={() => <Login user={this.state.user} handleLogin={this.handleLogin} />} />
+          <Route exact path="/signup" render={() => <Signup user={this.state.user} handleSignup={this.handleSignup} />} />
+          <Route exact path="/settings" render={() => <Settings user={this.state.user} />} />
+          <Route exact path="/logout" component={Home} />
+          <Route path="/" component={Error}/>
         </Switch>
       </Router>
     );
