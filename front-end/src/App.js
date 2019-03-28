@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import { BrowserRouter as Router, Route, Switch, withRouter } from "react-router-dom";
+import { Route, Switch, withRouter } from "react-router-dom";
 
 import Home from './containers/Home'
 import User from './containers/User'
@@ -93,12 +93,13 @@ class App extends Component {
   logOut = () => {
     console.log("logging out");
     this.setState({ user: {} }, localStorage.clear())
+    this.props.history.push("/home");
   }
 
   render(){
     console.log("The current user is: ", this.state)
     return (
-      <Router>
+      <div>
         <NavBar user={this.state.user} logOut={this.logOut}/>
         <Switch>
           <Route exact path="/home" render={() => <Home handleSubmit={this.handleSubmit} />} />
@@ -112,7 +113,7 @@ class App extends Component {
           <Route exact path="/logout" component={Home} />
           <Route path="/" component={Error}/>
         </Switch>
-      </Router>
+      </div>
     );
   }
 }
