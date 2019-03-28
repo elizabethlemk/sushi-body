@@ -14,6 +14,14 @@ class Login extends React.Component {
     }
   }
 
+  handleSubmit = () => {
+    this.props.handleLogin(this.state)
+    this.setState({
+      username: '',
+      password: ''
+    })
+  }
+
   render(){
     return (
       <div className="login-form">
@@ -25,10 +33,11 @@ class Login extends React.Component {
               </Header>
               <Form size='large' >
                 <Segment stacked>
-                  <Form.Input fluid icon='user' iconPosition='left' placeholder='Username' name='username' onChange={this.handleChange}/>
+                  <Form.Input fluid icon='user' iconPosition='left' value={this.state.username} placeholder='Username' name='username' onChange={this.handleChange}/>
                   <Form.Input
                   fluid
                   icon='lock'
+                  value={this.state.password}
                   iconPosition='left'
                   placeholder='Password'
                   type='password'
@@ -36,7 +45,7 @@ class Login extends React.Component {
                   onChange={this.handleChange}
                   />
 
-                <Button color='teal' fluid size='large' onClick={() => this.props.handleLogin(this.state)}> Login </Button>
+                <Button color='teal' fluid size='large' onClick={this.handleSubmit}> Login </Button>
               </Segment>
             </Form>
             <Message> New to us? <Link to="/signup">Sign Up</Link> </Message>

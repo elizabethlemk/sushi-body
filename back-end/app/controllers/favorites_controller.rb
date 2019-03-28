@@ -7,7 +7,6 @@ class FavoritesController < ApplicationController
 
   def create
     @favorite = Favorite.create(fav_params)
-    byebug
     render json: @favorite
   end
 

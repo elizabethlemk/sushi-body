@@ -83,15 +83,23 @@ class App extends Component {
       },
       body: JSON.stringify({ user: userInfo })
     }).then(resp => resp.json())
-      .then(json => this.setState ({ user: json.user }), () => this.props.history.push("/journal")
+      .then(json => this.setState({user: json.user },
+        () => { localStorage.setItem("token", json.jwt);
+          this.props.history.push("/journal");
+      })
     );
+  }
+
+  logOut = () => {
+    console.log("logging out");
+    this.setState({ user: {} }, localStorage.clear())
   }
 
   render(){
     console.log("The current user is: ", this.state)
     return (
       <Router>
-        <NavBar user={this.state.user} />
+        <NavBar user={this.state.user} logOut={this.logOut}/>
         <Switch>
           <Route exact path="/home" render={() => <Home handleSubmit={this.handleSubmit} />} />
           <Route exact path="/guide" render={() => <SushiGuide user={this.state.user} handleLikes={this.handleLikes}/>} />

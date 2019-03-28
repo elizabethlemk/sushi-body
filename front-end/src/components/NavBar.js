@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { Dropdown, Image, Input, Menu } from 'semantic-ui-react'
+import { Button, Dropdown, Image, Input, Menu } from 'semantic-ui-react'
 
 let audio = new Audio("sushibody.mp3");
 
@@ -12,6 +12,7 @@ class NavBar extends React.Component {
   playSound = () => {
       audio.play();
   }
+
 
   render(){
     const { activeItem } = this.state
@@ -49,18 +50,18 @@ class NavBar extends React.Component {
           </Menu.Item>
 
           {Object.keys(this.props.user).length > 0  ?
-            <Dropdown item text={this.props.user.username} color='teal' active={activeItem === 'user' } onClick={this.handleItemClick}>
+            (<Dropdown item text={this.props.user.username} color='teal' active={activeItem === 'user' } onClick={this.handleItemClick}>
             <Dropdown.Menu>
               <Dropdown.Item as={NavLink} exact to="/user">Profile</Dropdown.Item>
               <Dropdown.Item as={NavLink} exact to="/settings">Settings</Dropdown.Item>
-              <Dropdown.Item as={NavLink} exact to="/logout">Logout</Dropdown.Item>
+              <Dropdown.Item as={Button} onClick={this.props.logOut}>Logout</Dropdown.Item>
             </Dropdown.Menu>
-          </Dropdown> :
-          <Menu.Item
+          </Dropdown>) :
+          (<Menu.Item
             as={NavLink} exact to="/login"
             name='login'
             active={activeItem === 'login'}
-            onClick={this.handleItemClick} /> }
+            onClick={this.handleItemClick} />) }
         </Menu.Menu>
 
       </Menu>

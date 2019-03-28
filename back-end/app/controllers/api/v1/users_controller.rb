@@ -23,12 +23,11 @@ class Api::V1::UsersController < ApplicationController
       restaurant
     end
     @user.update(user_params)
-    render json: @user
+    render json: { user: UserSerializer.new(current_user) }, status: :accepted
   end
 
   def destroy
     @user.destroy
-    session.delete :user_id
   end
 
 # Private helper methods
