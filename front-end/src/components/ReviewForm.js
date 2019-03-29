@@ -35,6 +35,7 @@ class ReviewForm extends React.Component {
             id='form-button-control-public'
             control={Button}
             content='Confirm'
+            onClick={this.props.handleSidebarHide}
           />
         </Form>
       </Segment>

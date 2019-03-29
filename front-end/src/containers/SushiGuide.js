@@ -24,7 +24,11 @@ class SushiGuide extends React.Component {
         {this.state.sushis.length > 0 ?
         <Card.Group itemsPerRow={6}>
           {this.state.sushis.map(sushiObj => (
-            <Sushi key={sushiObj.id} sushi={sushiObj} handleLikes={this.props.handleLikes} user={this.props.user}/>
+            <Sushi key={sushiObj.id} sushi={sushiObj}
+            handleLikes={this.props.handleLikes}
+            handleUnlike={this.props.handleUnlike}
+            user={this.props.user}
+            favorites={this.props.favorites}/>
           )) }
         </ Card.Group> :
         <Dimmer active inverted>

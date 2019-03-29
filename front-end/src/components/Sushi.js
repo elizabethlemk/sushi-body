@@ -25,7 +25,7 @@ class Sushi extends React.Component {
           if (this.state.liked) {
             this.props.handleLikes(this.props.sushi.id)
           } else {
-            console.log("trying to delete");
+            this.props.handleUnlike(this.props.sushi.id)
           }
         }
       )

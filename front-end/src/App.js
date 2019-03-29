@@ -16,7 +16,8 @@ import Settings from './components/Settings'
 
 class App extends Component {
   state={
-    user: {}
+    user: {},
+    favorites: []
   }
 
   componentDidMount = () => {
@@ -30,7 +31,7 @@ class App extends Component {
             Authorization: `Bearer ${token}`
           }
         }).then(resp => resp.json())
-          .then(json => this.setState({ user: json.user }, () => this.props.history.push("/user")
+          .then(json => this.setState({ user: json.user }, () => this.props.history.push("/journal")
             )
           )
       : this.props.history.push("/home");
@@ -48,11 +49,13 @@ class App extends Component {
         sushi_guide_id: sushiId
        })
     }).then(resp => resp.json())
-    .then(json => console.log(json))
+    .then(json => this.setState({ ...this.state, favorites: [...this.state.favorites, json] },
+      console.log(this.state.favorites)
+    ))
   }
 
-  handleUnlike = (sushiId) => {
-    fetch(`http://localhost:4000/api/v1/favorites/${sushiId}`,{
+  handleUnlike = (favId) => {
+    fetch(`http://localhost:4000/api/v1/favorites/${favId}`,{
       method: 'DELETE'
     })
   }
@@ -91,19 +94,20 @@ class App extends Component {
   }
 
   logOut = () => {
-    console.log("logging out");
     this.setState({ user: {} }, localStorage.clear())
     this.props.history.push("/home");
   }
 
   render(){
-    console.log("The current user is: ", this.state)
     return (
       <div>
         <NavBar user={this.state.user} logOut={this.logOut}/>
         <Switch>
           <Route exact path="/home" render={() => <Home handleSubmit={this.handleSubmit} />} />
-          <Route exact path="/guide" render={() => <SushiGuide user={this.state.user} handleLikes={this.handleLikes}/>} />
+          <Route exact path="/guide" render={() => <SushiGuide user={this.state.user}
+            handleLikes={this.handleLikes}
+            handleUnlike={this.handleUnlike}
+            favorites={this.state.favorites}/>} />
           <Route exact path="/user" render={() => <User user={this.state.user} />} />
           <Route exact path="/restaurants" render={() => <MapContainer user={this.state.user} />} />
           <Route exact path="/journal" render={() => <Journal user={this.state.user} />} />

@@ -22,7 +22,7 @@ class Journal extends React.Component {
       <Container fluid textAlign='center'>
         <Header as='h2'>Journal</Header>
 
-        <Sidebar.Pushable as={Segment}>
+        <Sidebar.Pushable as={Container}>
          <Sidebar
            as={Segment}
            animation='overlay'
@@ -33,11 +33,13 @@ class Journal extends React.Component {
            direction='top'
            visible={visible}
          >
-           <ReviewForm selected={this.state.selected}/>
+           <ReviewForm selected={this.state.selected} handleSidebarHide={this.handleSidebarHide}/>
          </Sidebar>
 
          <Sidebar.Pusher dimmed={visible}>
+         <Divider horizontal>
            <Header as='h2'>Your Bookmarks</Header>
+          </Divider>
              <Card.Group centered itemsPerRow={4}>
                <Bookmarks name="journal" handleShowClick={this.handleShowClick} visible={this.state.visible} selected={this.state.selected} />
                <Bookmarks name="journal" handleShowClick={this.handleShowClick} visible={this.state.visible} selected={this.state.selected} />
@@ -50,8 +52,9 @@ class Journal extends React.Component {
              </Card.Group>
          </Sidebar.Pusher>
        </Sidebar.Pushable>
-       <Divider />
+       <Divider horizontal>
        <Header as='h2'>Your Reviews</Header>
+       </Divider>
         <Grid centered>
           <Grid.Row centered columns={3} textAlign='center'>
             <Grid.Column >
