@@ -1,4 +1,4 @@
-class FavoritesController < ApplicationController
+class Api::V1::FavoritesController < ApplicationController
   skip_before_action :authorized
   def index
     @favorites = Favorite.all
@@ -18,6 +18,6 @@ class FavoritesController < ApplicationController
   private
 
   def fav_params
-    params.require(:favorite).permit(:user_id, :sushi_id)
+    params.require(:favorite).permit(:user_id, :sushi_guide_id)
   end
 end

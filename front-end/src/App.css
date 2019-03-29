@@ -8,6 +8,10 @@
   position: fixed; /* optional depending on what you want to do in your app */
 }
 
+.was-validated .form-control:valid~.invalid-feedback {
+    display: none;
+}
+
 .login-form, .signup-form {
   background-image: url("plate.jpg");
   height:100vh;

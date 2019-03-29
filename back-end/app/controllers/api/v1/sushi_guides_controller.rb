@@ -1,4 +1,4 @@
-class SushiGuidesController < ApplicationController
+class Api::V1::SushiGuidesController < ApplicationController
   skip_before_action :authorized, only: [:index]
 
   def index

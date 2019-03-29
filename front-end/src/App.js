@@ -37,7 +37,7 @@ class App extends Component {
   };
 
   handleLikes = (sushiId) => {
-    fetch('http://localhost:4000/favorites',{
+    fetch('http://localhost:4000/api/v1/favorites',{
       method: 'POST',
       headers: {
         "content-type": "application/json",
@@ -45,14 +45,14 @@ class App extends Component {
       },
       body: JSON.stringify({
         user_id: this.state.user.id,
-        sushi_id: sushiId
+        sushi_guide_id: sushiId
        })
     }).then(resp => resp.json())
     .then(json => console.log(json))
   }
 
   handleUnlike = (sushiId) => {
-    fetch(`http://localhost:4000/favorites/${sushiId}`,{
+    fetch(`http://localhost:4000/api/v1/favorites/${sushiId}`,{
       method: 'DELETE'
     })
   }
