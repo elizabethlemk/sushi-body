@@ -1,8 +1,5 @@
 import React from 'react'
-import Login from '../components/Login'
-import Signup from '../components/Signup'
 import { Container, Header } from 'semantic-ui-react'
-import { Link, Route, Switch, withRouter} from 'react-router-dom';
 
 class Home extends React.Component {
 
@@ -19,4 +16,4 @@ class Home extends React.Component {
   }
 }
 
-export default withRouter(Home)
+export default Home

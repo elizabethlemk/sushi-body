@@ -19,36 +19,42 @@ class Sushi extends React.Component {
 
   handleHide = () => this.setState({ active: false })
   handleShow = () => {
-    this.setState({ active: true, liked: !this.state.liked },
-      () => {
-        if (this.state.liked) {
-          this.props.handleLikes(this.props.sushi.id)
-        } else {
-          console.log("trying to delte");
+    if (Object.keys(this.props.user).length > 0 ) {
+      this.setState({ active: true, liked: !this.state.liked },
+        () => {
+          if (this.state.liked) {
+            this.props.handleLikes(this.props.sushi.id)
+          } else {
+            console.log("trying to delete");
+          }
         }
-      }
-    )
-    setTimeout(this.handleHide, 2000)
+      )
+      setTimeout(this.handleHide, 2000)
+    } else {
+      alert("Need to log in to make a favorite!")
+    }
   }
 
   render() {
     const { active } = this.state
+    const { sushi } = this.props
+
     return (
         <Card >
           <Dimmer.Dimmable dimmed={active}>
-            <Image src={this.props.sushi.img} onClick={this.handleShow} />
+            <Image src={sushi.img} onClick={this.handleShow} />
           </Dimmer.Dimmable>
           <Card.Content textAlign='center'>
-            <Card.Header>{this.props.sushi.name}</Card.Header>
+            <Card.Header>{sushi.name}</Card.Header>
             <Card.Meta>
               <span className='date'>{this.displayName()}</span>
             </Card.Meta>
-            <Card.Description>{(this.props.sushi.english).toUpperCase()}</Card.Description>
+            <Card.Description>{(sushi.english).toUpperCase()}</Card.Description>
 
           </Card.Content>
           <Card.Content extra textAlign='center'>
             { this.state.liked ? <Icon name='heart' color='red' /> : null }
-            {(this.props.sushi.type_one)} / {this.props.sushi.type_two}
+            {(sushi.type_one)} / {sushi.type_two}
           </Card.Content>
             <Dimmer active={active} onClickOutside={this.handleHide}>
               <Header as='h2' icon inverted>

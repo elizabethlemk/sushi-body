@@ -1,5 +1,5 @@
 import React from 'react'
-import { Comment, Grid, Icon, Rating } from 'semantic-ui-react'
+import { Comment, Grid, Rating } from 'semantic-ui-react'
 
 
 
